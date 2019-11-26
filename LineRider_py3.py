@@ -934,9 +934,9 @@ def setupWindow(root):
     root.config(menu=menubar)
 #FILE
     fileMenu = Menu(menubar, tearoff=False)
-    fileMenu.add_command(label="new (ctrl+n)", command = newTrack )
-    fileMenu.add_command(label="load (ctrl+o)", command = loadTrack)
-    fileMenu.add_command(label="save (ctrl+s)", command = saveTrack)
+    fileMenu.add_command(label="New (ctrl+n)", command = newTrack )
+    fileMenu.add_command(label="Load (ctrl+o)", command = loadTrack)
+    fileMenu.add_command(label="Save (ctrl+s)", command = saveTrack)
     menubar.add_cascade(label="File", menu=fileMenu)
 #EDIT
     def undo():
@@ -947,9 +947,9 @@ def setupWindow(root):
         tools.snap = not tools.snap
         displayT(tools.snap,"Line snapping on","Line snapping off")
     editMenu = Menu(menubar, tearoff=False)
-    editMenu.add_command(label="undo (ctrl+z)", command = undo)
-    editMenu.add_command(label="redo (ctrl+shift+z)", command = redo)
-    editMenu.add_command(label="toggle line snapping (s)", command = snap)
+    editMenu.add_command(label="Undo (ctrl+z)", command = undo)
+    editMenu.add_command(label="Redo (ctrl+shift+z)", command = redo)
+    editMenu.add_command(label="Toggle Line Snapping (s)", command = snap)
     menubar.add_cascade(label="Edit", menu=editMenu)
 #TOOLS
     def setLTool(tool):
@@ -959,14 +959,14 @@ def setupWindow(root):
     def setLine(lineType):
         tools.lineType = lineType
     toolMenu = Menu(menubar)
-    toolMenu.add_command(label="pencil (q)", command=lambda:setLTool(pencil))
-    toolMenu.add_command(label="line (w)", command= lambda: setLTool(makeLine))
+    toolMenu.add_command(label="Pencil (q)", command=lambda:setLTool(pencil))
+    toolMenu.add_command(label="Line (w)", command= lambda: setLTool(makeLine))
     types = Menu(toolMenu)
-    types.add_command(label="solid (1)", command= lambda:setLine("solid"))
-    types.add_command(label="acceleration (2)", command=lambda:setLine("acc"))
-    types.add_command(label="scenery (3)", command=lambda:setLine("scene"))
-    toolMenu.add_cascade(label="line type", menu=types)
-    toolMenu.add_command(label="eraser (e)", command= lambda: setLTool(eraser))
+    types.add_command(label="Solid (1)", command= lambda:setLine("solid"))
+    types.add_command(label="Acceleration (2)", command=lambda:setLine("acc"))
+    types.add_command(label="Scenery (3)", command=lambda:setLine("scene"))
+    toolMenu.add_cascade(label="Line Type", menu=types)
+    toolMenu.add_command(label="Eraser (e)", command= lambda: setLTool(eraser))
 #    toolMenu.add_separator()
 #    toolMenu.add_command(label="pan", command=setRTool(pan))
     menubar.add_cascade(label="Tools", menu=toolMenu)
@@ -1007,38 +1007,38 @@ def setupWindow(root):
         displayT(canvas.data.viewThinLines, "Viewing normal lines",
                  "Viewing normal lines")
     viewMenu = Menu(menubar)
-    viewMenu.add_command(label="velocity vectors (v)", command=viewVector)
-    viewMenu.add_command(label="points (b)", command=viewPoints)
-    viewMenu.add_command(label="collisions (c)", command=viewCollisions)
-    viewMenu.add_command(label="thin lines", command = viewThinLines)
-    viewMenu.add_command(label="grid", command=viewGrid)
-    viewMenu.add_command(label="status", command=viewStatus)
+    viewMenu.add_command(label="Velocity Vectors (v)", command=viewVector)
+    viewMenu.add_command(label="Points (b)", command=viewPoints)
+    viewMenu.add_command(label="Collisions (c)", command=viewCollisions)
+    viewMenu.add_command(label="Thin Lines", command = viewThinLines)
+    viewMenu.add_command(label="Grid", command=viewGrid)
+    viewMenu.add_command(label="Status", command=viewStatus)
     viewMenu.add_separator()
-    viewMenu.add_command(label="starting point (home)", command=goToStart)
-    viewMenu.add_command(label="last line (end)", command=lastLine)
-    viewMenu.add_command(label="follow rider", command=followRider)
+    viewMenu.add_command(label="Starting Point (home)", command=goToStart)
+    viewMenu.add_command(label="Last Line (end)", command=lastLine)
+    viewMenu.add_command(label="Follow Rider", command=followRider)
     menubar.add_cascade(label="View", menu=viewMenu)
 #playback
     def slowmo():
         if not canvas.data.pause:
             canvas.data.slowmo = not canvas.data.slowmo
     playMenu = Menu(menubar)
-    playMenu.add_command(label="play/pause (space/p)", command=playPause)
-    playMenu.add_command(label="stop (space)", command=stop)
-    playMenu.add_command(label="step (t)", command=updatePositions)
-    playMenu.add_command(label="reset position (r)", command=resetRider)
-    playMenu.add_command(label="flag (f)", command = flag)
-    playMenu.add_command(label="reset flag (ctrl+f)", command = resetFlag)
-    playMenu.add_command(label="play from beginning (ctrl+p)",
+    playMenu.add_command(label="Play/Pause (space/p)", command=playPause)
+    playMenu.add_command(label="Stop (space)", command=stop)
+    playMenu.add_command(label="Step (t)", command=updatePositions)
+    playMenu.add_command(label="Reset Position (r)", command=resetRider)
+    playMenu.add_command(label="Flag (f)", command = flag)
+    playMenu.add_command(label="Reset Flag (ctrl+f)", command = resetFlag)
+    playMenu.add_command(label="Play from Beginning (ctrl+p)",
                          command=playFromBeginning)
-    playMenu.add_command(label="slow-mo (m)", command=slowmo)
+    playMenu.add_command(label="Slow-mo (m)", command=slowmo)
     menubar.add_cascade(label="Playback", menu=playMenu)
 #help
     def viewHelp():
         canvas.data.help = not canvas.data.help
     helpMenu = Menu(menubar)
-    helpMenu.add_command(label="help", command=viewHelp)
-    helpMenu.add_command(label="about", command=doAbout)
+    helpMenu.add_command(label="Help", command=viewHelp)
+    helpMenu.add_command(label="About", command=doAbout)
     menubar.add_cascade(label="Help", menu=helpMenu)
 #bindings
     root.bind("<Button-1>", LmousePressed)
